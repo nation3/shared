@@ -1,5 +1,5 @@
 {
-  "name": "nation3",
+  "name": "@nation3/components",
   "version": "1.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
