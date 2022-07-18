@@ -26,6 +26,7 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@nation3/utils": "^1.0.5"
+    "@heroicons/react": "^1.0.6",
+    "@nation3/utils": "^1.0.6"
   }
 }
