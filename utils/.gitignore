@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.yalc
+yalc.lock
+temp/
+.swc/
+*.log
+.DS_Store
+# jns shenanigans
+old_src/

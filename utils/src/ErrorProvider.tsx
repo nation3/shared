@@ -1,27 +1,28 @@
-import { createContext, useContext, useState } from "react";
+import { config } from "./config";
 import React from "react";
+import { createContext, useContext, useState } from "react";
 import { useNetwork } from "wagmi";
-import networkToId from "./network-id";
 
 const ErrorContext = createContext({} as any);
 
-function ErrorProvider({ children }: any) {
+function ErrorProvider({ children }: React.PropsWithChildren<{}>) {
   const [errors, setErrors] = useState([] as any);
   let [count, setCount] = useState(0);
-  const { activeChain } = useNetwork();
+  const [{ data }] = useNetwork();
 
   const addError = (newErrors: any) => {
     if (
       newErrors &&
       newErrors[0] &&
-      activeChain?.id &&
-      activeChain.id == networkToId(process.env.NEXT_PUBLIC_CHAIN)
+      data.chain?.id &&
+      data.chain.id ==
+        config.networks[process.env.NEXT_PUBLIC_CHAIN ?? "mainnet"]
     ) {
       for (let error of newErrors) {
         console.error(error);
         if (error instanceof Error) {
           error = JSON.parse(
-            JSON.stringify(error, Object.getOwnPropertyNames(error))
+            JSON.stringify(error, Object.getOwnPropertyNames(error)),
           );
           // Don't add the error if it's "invalid address or ENS name",
           // no idea why those errors appear in the first place.
