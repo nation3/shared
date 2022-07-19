@@ -1,6 +1,6 @@
-import BalancerVault from "./abis/BalancerVault.json";
-import { useContractRead } from "./hooks/use-wagmi";
-import { NumberType, transformNumber } from "./numbers";
+import BalancerVault from "../abis/BalancerVault.json";
+import { NumberType, transformNumber } from "../numbers";
+import { useContractRead } from "./use-wagmi";
 import { useState, useEffect } from "react";
 
 export function useBalancerPool(id: any, balancerVault: string) {
