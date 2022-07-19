@@ -24,8 +24,8 @@ export function useStaticCall({
   const [{ data: signer }] = useSigner();
 
   const contract = useContract({
-    addressOrName: addressOrName,
-    contractInterface: contractInterface,
+    addressOrName,
+    contractInterface,
     signerOrProvider: signer,
   });
 
