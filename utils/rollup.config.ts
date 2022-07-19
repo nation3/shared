@@ -5,6 +5,8 @@ import dts from "rollup-plugin-dts";
 import json from "@rollup/plugin-json";
 import svgr from "@svgr/rollup";
 
+import { terser } from "rollup-plugin-terser";
+
 const packageJson = require("./package.json");
 
 export default [
@@ -29,6 +31,7 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       json(),
       svgr(),
+      terser(),
     ],
   },
   {
