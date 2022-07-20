@@ -4,7 +4,7 @@ import { useContractRead } from "./use-wagmi";
 import { useState, useEffect } from "react";
 
 export function useBalancerPool(id: any, balancerVault: string) {
-  const { data: poolData, isLoading } = useContractRead(
+  const { data: poolData, loading: isLoading } = useContractRead(
     {
       addressOrName: balancerVault,
       contractInterface: BalancerVault.abi,

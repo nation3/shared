@@ -13,7 +13,7 @@ import {
 } from "wagmi";
 
 export function useConnect() {
-  return useHandleError(_useConnect());
+  return useHandleError(_useConnect()[0]);
 }
 
 // custom extension of wagmi
@@ -22,19 +22,19 @@ export function useStaticCall(params: any) {
 }
 
 export function useAccount(params?: any) {
-  return useHandleError(_useAccount(params));
+  return useHandleError(_useAccount(params)[0]);
 }
 
 export function useNetwork() {
-  return useHandleError(_useNetwork());
+  return useHandleError(_useNetwork()[0]);
 }
 
 export function useBalance(params: any) {
-  return useHandleError(_useBalance(params));
+  return useHandleError(_useBalance(params)[0]);
 }
 
 export function useSigner(params?: any) {
-  return _useSigner(params);
+  return _useSigner(params)[0];
 }
 
 export function useContract(params: any) {
@@ -45,11 +45,11 @@ export function useContractRead(
   config: any,
   method: any,
   argsAndOverrides: any,
-  throwOnRevert?: any,
+  throwOnRevert?: any
 ) {
   return useHandleError(
-    _useContractRead(config, method, argsAndOverrides),
-    throwOnRevert,
+    _useContractRead(config, method, argsAndOverrides)[0],
+    throwOnRevert
   );
 }
 
@@ -57,14 +57,14 @@ export function useContractWrite(
   config: any,
   method: any,
   argsAndOverrides: any,
-  throwOnRevert?: any,
+  throwOnRevert?: any
 ) {
   return useHandleError(
-    _useContractWrite(config, method, argsAndOverrides),
-    throwOnRevert,
+    _useContractWrite(config, method, argsAndOverrides)[0],
+    throwOnRevert
   );
 }
 
 export function useSignTypedData(params: any) {
-  return useHandleError(_useSignTypedData(params));
+  return useHandleError(_useSignTypedData(params)[0]);
 }

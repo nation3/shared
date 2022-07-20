@@ -18,7 +18,7 @@ export function useStaticCall({
   args = args?.length === 0 ? undefined : args; // args should be undefined if there are no arguments, make sure here
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(undefined);
   const [data, setData] = useState(defaultData);
 
   const [{ data: signer }] = useSigner();

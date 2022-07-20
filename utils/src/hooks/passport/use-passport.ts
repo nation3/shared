@@ -12,13 +12,16 @@ const nftIssuerContractParams = {
   contractInterface: PassportIssuer.abi,
 };
 
-export function usePassport(address: any) {
-  const { data: id, isLoading: loadingID } = useContractRead(
+export function usePassport(address: string) {
+  const { data: id, loading: loadingID } = useContractRead(
     nftIssuerContractParams,
     "passportId",
     { args: [address], enable: address },
     false
   );
-  const { loading, nft } = useNft(nationPassportNFT || "", id);
+  const { loading, nft } = useNft(
+    nationPassportNFT || "",
+    id?.toString() ?? ""
+  );
   return { data: { id, nft }, isLoading: loadingID || loading };
 }

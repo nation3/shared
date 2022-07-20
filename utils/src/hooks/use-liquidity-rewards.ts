@@ -11,8 +11,12 @@ const contractParams = {
 };
 
 export function useLiquidityRewards({ nationPrice, poolValue, address }: any) {
-  const { data: totalRewards, isLoading: totalRewardsLoading } =
-    useContractRead(contractParams, "totalRewards", {}, false);
+  const { data: totalRewards, loading: totalRewardsLoading } = useContractRead(
+    contractParams,
+    "totalRewards",
+    {},
+    false
+  );
   const months = 6;
 
   const { data: unclaimedRewards, loading: unclaimedRewardsLoading } =
@@ -24,7 +28,7 @@ export function useLiquidityRewards({ nationPrice, poolValue, address }: any) {
       skip: !address,
     });
 
-  const { data: userDeposit, isLoading: userDepositLoading } = useContractRead(
+  const { data: userDeposit, loading: userDepositLoading } = useContractRead(
     contractParams,
     "userDeposit",
     {
@@ -34,10 +38,14 @@ export function useLiquidityRewards({ nationPrice, poolValue, address }: any) {
     }
   );
 
-  const { data: totalDeposit, isLoading: totalDepositLoading } =
-    useContractRead(contractParams, "totalDeposit", {}, false);
+  const { data: totalDeposit, loading: totalDepositLoading } = useContractRead(
+    contractParams,
+    "totalDeposit",
+    {},
+    false
+  );
 
-  const { data: lpTokensSupply, isLoading: lpTokensSupplyLoading } =
+  const { data: lpTokensSupply, loading: lpTokensSupplyLoading } =
     useContractRead(
       {
         addressOrName: process.env.NEXT_PUBLIC_BALANCER_NATION_ETH_POOL_TOKEN,
@@ -48,7 +56,7 @@ export function useLiquidityRewards({ nationPrice, poolValue, address }: any) {
       false
     );
 
-  const { data: userBalance, isLoading: userBalanceLoading } = useContractRead(
+  const { data: userBalance, loading: userBalanceLoading } = useContractRead(
     contractParams,
     "userBalance",
     {

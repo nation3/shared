@@ -4,21 +4,18 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export function usePreferredNetwork() {
-  const { activeChain } = useNetwork();
+  const { data } = useNetwork();
   const preferredNetwork = process.env.NEXT_PUBLIC_CHAIN ?? "mainnet";
 
   const [isPreferredNetwork, setIsPreferredNetwork] = useState(false);
 
   useEffect(() => {
-    if (
-      activeChain?.id &&
-      activeChain?.id == config.networks[preferredNetwork]
-    ) {
+    if (data.chain?.id && data.chain?.id == config.networks[preferredNetwork]) {
       setIsPreferredNetwork(true);
     } else {
       setIsPreferredNetwork(false);
     }
-  }, [activeChain?.id]);
+  }, [data.chain?.id]);
 
   return { isPreferredNetwork, preferredNetwork };
 }
