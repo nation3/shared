@@ -1,11 +1,11 @@
 {
   "name": "@nation3/utils",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com:thirdweb-dev/react.git"
+    "url": "git+https://github.com/nation3/shared.git"
   },
-  "author": "thirdweb engineering",
+  "author": "gregfromstl",
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
