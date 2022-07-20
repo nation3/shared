@@ -2,6 +2,7 @@ import { ErrorProvider } from "./ErrorProvider";
 import { connectors, provider as externalProvider } from "./connectors";
 import { ethers } from "ethers";
 import React, { useEffect } from "react";
+import { NftProvider } from "use-nft";
 import { WagmiProvider } from "wagmi";
 
 export const Nation3Provider = ({ children }: React.PropsWithChildren<{}>) => {
@@ -16,7 +17,6 @@ export const Nation3Provider = ({ children }: React.PropsWithChildren<{}>) => {
         process.env.NEXT_PUBLIC_CHAIN
       );
     }
-    console.log(provider);
   }, []);
 
   return (
@@ -25,7 +25,9 @@ export const Nation3Provider = ({ children }: React.PropsWithChildren<{}>) => {
       provider={provider}
       autoConnect={true}
     >
-      <ErrorProvider>{children}</ErrorProvider>
+      <NftProvider fetcher={["ethers", { provider: externalProvider() }]}>
+        <ErrorProvider>{children}</ErrorProvider>
+      </NftProvider>
     </WagmiProvider>
   );
 };
