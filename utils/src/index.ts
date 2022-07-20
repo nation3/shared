@@ -13,3 +13,4 @@ export * from "./hooks/use-liquidity-rewards";
 export * from "./hooks/use-ve-nation-boost";
 export * from "./hooks/merkle-drop";
 export * from "./hooks/use-nation-balance";
+export * from "./hooks/passport";
