@@ -11,3 +11,4 @@ export * from "./hooks/use-boosted-apy";
 export * from "./hooks/use-pool-token-balance";
 export * from "./hooks/use-liquidity-rewards";
 export * from "./hooks/use-ve-nation-boost";
+export * from "./hooks/merkle-drop";
