@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css";
 import { useBalance } from "@nation3/utils";
 
 const Home: NextPage = () => {
-  const [{ data }] = useBalance({
+  const { data } = useBalance({
     addressOrName: "0x0000000000000000000000000000000000000000",
   });
   return (

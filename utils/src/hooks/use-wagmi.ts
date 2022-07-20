@@ -4,16 +4,28 @@ import {
   useAccount as _useAccount,
   useBalance as _useBalance,
   useConnect as _useConnect,
+  useEnsResolveName as _useEnsResolveName,
   useContract as _useContract,
   useContractRead as _useContractRead,
   useContractWrite as _useContractWrite,
   useNetwork as _useNetwork,
   useSignTypedData as _useSignTypedData,
   useSigner as _useSigner,
+  useEnsResolveName,
+  Connector,
 } from "wagmi";
 
 export function useConnect() {
-  return useHandleError(_useConnect()[0]);
+  const [obj, connect] = _useConnect();
+  return {
+    ...obj,
+    connect: async (connector: Connector) =>
+      useHandleError({ error: undefined, ...(await connect(connector)) }, true),
+  };
+}
+
+export function useEnsName<T>(params: T) {
+  return useHandleError(useEnsResolveName(params)[0]);
 }
 
 // custom extension of wagmi
@@ -57,14 +69,20 @@ export function useContractWrite(
   config: any,
   method: any,
   argsAndOverrides: any,
-  throwOnRevert?: any
+  throwOnRevert?: boolean
 ) {
-  return useHandleError(
-    _useContractWrite(config, method, argsAndOverrides)[0],
-    throwOnRevert
-  );
+  const [obj, call] = _useContractWrite(config, method, argsAndOverrides);
+  return {
+    ...obj,
+    writeAsync: async (args: any) =>
+      useHandleError(await call(args), throwOnRevert),
+  };
 }
 
-export function useSignTypedData(params: any) {
-  return useHandleError(_useSignTypedData(params)[0]);
+export function useSignTypedData(params: any, throwOnRevert?: boolean) {
+  const [obj, call] = _useSignTypedData(params);
+  return {
+    ...obj,
+    writeAsync: async () => useHandleError(await call(params), throwOnRevert),
+  };
 }

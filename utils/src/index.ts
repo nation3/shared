@@ -1,4 +1,5 @@
 export * from "./Nation3Provider";
+export * from "./ErrorProvider";
 
 export * from "./numbers";
 
@@ -14,5 +15,7 @@ export * from "./hooks/use-ve-nation-boost";
 export * from "./hooks/merkle-drop";
 export * from "./hooks/use-nation-balance";
 export * from "./hooks/use-preferred-network";
+export * from "./hooks/use-handle-error";
 export * from "./hooks/passport";
 export * from "./hooks/agreement";
+export * from "./hooks/ve-nation";
