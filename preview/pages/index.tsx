@@ -3,9 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import { useBalance } from "@nation3/utils";
+import Balance from "../components/Balance";
 
 const Home: NextPage = () => {
-  const { data } = useBalance({
+  const { data, loading } = useBalance({
     addressOrName: "0x0000000000000000000000000000000000000000",
   });
   return (
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>{data?.value.toString() ?? "HI"}</h1>
+        <Balance balance={data?.value} loading={loading} />
 
         <p className={styles.description}>
           Get started by editing{" "}
