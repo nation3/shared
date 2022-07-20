@@ -11,6 +11,7 @@ import {
   useNetwork as _useNetwork,
   useSignTypedData as _useSignTypedData,
   useSigner as _useSigner,
+  useWaitForTransaction as _useWaitForTransaction,
   useEnsResolveName,
   Connector,
 } from "wagmi";
@@ -19,9 +20,12 @@ export function useConnect() {
   const [obj, connect] = _useConnect();
   return {
     ...obj,
-    connect: async (connector: Connector) =>
-      useHandleError({ error: undefined, ...(await connect(connector)) }, true),
+    connect: async (connector: Connector) => await connect(connector),
   };
+}
+
+export function useWaitForTransaction<T>(params: T) {
+  return useHandleError(_useWaitForTransaction(params)[0]);
 }
 
 export function useEnsName<T>(params: T) {
@@ -72,11 +76,13 @@ export function useContractWrite(
   throwOnRevert?: boolean
 ) {
   const [obj, call] = _useContractWrite(config, method, argsAndOverrides);
-  return {
-    ...obj,
-    writeAsync: async (args: any) =>
-      useHandleError(await call(args), throwOnRevert),
-  };
+  return useHandleError(
+    {
+      ...obj,
+      writeAsync: async (args: any) => await call(args),
+    },
+    throwOnRevert
+  );
 }
 
 export function useSignTypedData(params: any, throwOnRevert?: boolean) {
