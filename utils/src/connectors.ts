@@ -7,7 +7,7 @@ import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
 const chains = [chain.mainnet, chain.goerli, chain.hardhat];
 
-export function provider() {
+export function externalProvider() {
   if (process.env.NEXT_PUBLIC_CHAIN === "local") {
     console.log("Provider: Connected to localhost provider");
     return new ethers.providers.JsonRpcProvider(

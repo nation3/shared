@@ -1,5 +1,5 @@
 import { ErrorProvider } from "./ErrorProvider";
-import { connectors, provider as externalProvider } from "./connectors";
+import { connectors, externalProvider } from "./connectors";
 import { ethers } from "ethers";
 import React, { useEffect } from "react";
 import { NftProvider } from "use-nft";

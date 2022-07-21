@@ -2,6 +2,7 @@ export * from "./Nation3Provider";
 export * from "./ErrorProvider";
 
 export * from "./numbers";
+export * from "./connectors";
 
 // hooks
 export * from "./hooks/use-balancer-pool";
