@@ -77,22 +77,25 @@ export function useContractWrite(
   argsAndOverrides: any,
   throwOnRevert?: boolean
 ) {
-  const [obj, call] = _useContractWrite(config, method, argsAndOverrides);
+  const [res, call] = _useContractWrite(config, method, argsAndOverrides);
   return useHandleError(
     {
-      ...obj,
+      ...res,
       writeAsync: async (args: any) => await call(args),
     },
     throwOnRevert
   );
 }
 
-export function useSignTypedData(params: any, throwOnRevert?: boolean) {
-  const [obj, call] = _useSignTypedData(params);
-  return {
-    ...obj,
-    writeAsync: async () => useHandleError(await call(params), throwOnRevert),
-  };
+export function useSignTypedData<T>(params: T, throwOnRevert?: boolean) {
+  const [res, call] = _useSignTypedData(params);
+  return useHandleError(
+    {
+      ...res,
+      writeAsync: async () => await call(params),
+    },
+    throwOnRevert
+  );
 }
 
 export function useSignMessage(
@@ -117,9 +120,11 @@ export function useSignMessage(
     }
   }, [res.error]);
 
-  return {
-    ...res,
-    signMessage: async () =>
-      useHandleError(await call({ message: params.message }), throwOnRevert),
-  };
+  return useHandleError(
+    {
+      ...res,
+      signMessage: async () => await call({ message: params.message }),
+    },
+    throwOnRevert
+  );
 }
