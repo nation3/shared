@@ -87,8 +87,26 @@ export function useContractWrite(
   );
 }
 
-export function useSignTypedData<T>(params: T, throwOnRevert?: boolean) {
+export function useSignTypedData<T>(
+  params: T,
+  onSuccess?: (message: string) => void,
+  onError?: (error: Error) => void,
+  throwOnRevert?: boolean
+) {
   const [res, call] = _useSignTypedData(params);
+
+  useEffect(() => {
+    if (res.data) {
+      onSuccess && onSuccess(res.data);
+    }
+  }, [res.data]);
+
+  useEffect(() => {
+    if (res.error) {
+      onError && onError(res.error);
+    }
+  }, [res.error]);
+
   return useHandleError(
     {
       ...res,

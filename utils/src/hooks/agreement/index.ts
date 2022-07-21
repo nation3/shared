@@ -23,13 +23,19 @@ export const value = {
   termsURI: `${process.env.NEXT_PUBLIC_AGREEMENT_URL}`,
 };
 
-export function useSignAgreement({ onSuccess }: { onSuccess: Function }) {
-  return useSignTypedData({
-    domain,
-    types,
-    value,
-    onSuccess,
-  });
+export function useSignAgreement({
+  onSuccess,
+}: {
+  onSuccess: (message: string) => void;
+}) {
+  return useSignTypedData(
+    {
+      domain,
+      types,
+      value,
+    },
+    onSuccess
+  );
 }
 
 export async function storeSignature(signature: string, tx: string) {
