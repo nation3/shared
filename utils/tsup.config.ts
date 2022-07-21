@@ -1,4 +1,3 @@
-import { NodeModulesPolyfillPlugin } from "@esbuild-plugins/node-modules-polyfill";
 import { defineConfig } from "tsup";
 
 export default defineConfig({
@@ -14,7 +13,7 @@ export default defineConfig({
   treeshake: true,
   globalName: "ThirdwebSDK",
   format: ["cjs", "esm"],
-  esbuildPlugins: [NodeModulesPolyfillPlugin()],
+  esbuildPlugins: [],
   // inject globals onto window if required
   banner: {
     js: '!function(o){o&&(void 0===o.global&&(o.global=o),void 0===o.globalThis&&(o.globalThis=o),void 0===o.process&&(o.process={env:{NODE_ENV:"production"}}))}("undefined"!=typeof window?window:void 0);',
