@@ -12,6 +12,7 @@ import {
   useSignTypedData as _useSignTypedData,
   useSigner as _useSigner,
   useWaitForTransaction as _useWaitForTransaction,
+  useSignMessage as _useSignMessage,
   useEnsResolveName,
   Connector,
 } from "wagmi";
@@ -91,4 +92,8 @@ export function useSignTypedData(params: any, throwOnRevert?: boolean) {
     ...obj,
     writeAsync: async () => useHandleError(await call(params), throwOnRevert),
   };
+}
+
+export function useSignMessage(params: any, throwOnRevert?: boolean) {
+  return useHandleError(_useSignMessage(params)[0], throwOnRevert);
 }
