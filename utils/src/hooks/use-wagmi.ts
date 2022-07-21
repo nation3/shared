@@ -1,5 +1,6 @@
 import { useHandleError } from "./use-handle-error";
 import { useStaticCall as _useStaticCall } from "./use-static-call";
+import { useEffect } from "react";
 import {
   useAccount as _useAccount,
   useBalance as _useBalance,
@@ -94,6 +95,31 @@ export function useSignTypedData(params: any, throwOnRevert?: boolean) {
   };
 }
 
-export function useSignMessage(params: any, throwOnRevert?: boolean) {
-  return useHandleError(_useSignMessage(params)[0], throwOnRevert);
+export function useSignMessage(
+  params: {
+    message: string;
+    onSuccess?: (data: any) => void;
+    onError?: (error: Error) => void;
+  },
+  throwOnRevert?: boolean
+) {
+  const [res, call] = _useSignMessage(params);
+
+  useEffect(() => {
+    if (res.data) {
+      params.onSuccess && params.onSuccess(res.data);
+    }
+  }, [res.data]);
+
+  useEffect(() => {
+    if (res.error) {
+      params.onError && params.onError(res.error);
+    }
+  }, [res.error]);
+
+  return {
+    ...res,
+    signMessage: async () =>
+      useHandleError(await call({ message: params.message }), throwOnRevert),
+  };
 }
