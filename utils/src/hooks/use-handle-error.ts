@@ -8,7 +8,7 @@ type hasError = {
 // For some contract interactions, a reverted call is not an error
 export function useHandleError<T extends hasError>(
   object: T,
-  throwOnRevert = true
+  throwOnRevert = false
 ): T {
   const errors = useErrorContext();
   useEffect(() => {
