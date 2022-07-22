@@ -1,6 +1,6 @@
 {
-  "name": "@nation3/utils",
-  "version": "1.0.34",
+  "name": "@nation3/components",
+  "version": "1.0.9",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nation3/shared.git"
@@ -24,11 +24,13 @@
   },
   "sideEffects:": false,
   "devDependencies": {
+    "@babel/core": "^7.18.9",
     "@trivago/prettier-plugin-sort-imports": "^3.2.0",
     "@types/mime": "^2.0.3",
     "@types/react": "^18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
+    "babel-loader": "^8.2.5",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
@@ -39,11 +41,13 @@
     "prettier": "^2.5.1",
     "react": "^18.1.0",
     "tsup": "^6.0.0",
-    "typescript": "^4.6.2"
+    "typescript": "^4.6.2",
+    "@heroicons/react": "^1.0.6"
   },
   "dependencies": {
     "wagmi": "^0.2.28",
-    "use-nft": "^0.12.0"
+    "use-nft": "^0.12.0",
+    "@nation3/utils": "^1.0.32"
   },
   "peerDependencies": {
     "ethers": ">=5.5.1",

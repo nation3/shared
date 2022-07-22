@@ -2,13 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import { useBalance } from "@nation3/utils";
-import Balance from "../components/Balance";
+import { ActionButton } from "@nation3/components";
 
 const Home: NextPage = () => {
-  const { data, loading } = useBalance({
-    addressOrName: "0x0000000000000000000000000000000000000000",
-  });
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +14,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Balance balance={data?.value} loading={loading} />
+        <ActionButton action={{ writeAsync: async () => {} }}>
+          ActionButton
+        </ActionButton>
 
         <p className={styles.description}>
           Get started by editing{" "}

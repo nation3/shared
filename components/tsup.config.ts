@@ -11,7 +11,7 @@ export default defineConfig({
   shims: true,
   // use rollup for build to get smaller bundle sizes with tree shaking
   treeshake: true,
-  globalName: "Nation3Utility",
+  globalName: "Nation3Components",
   format: ["cjs", "esm"],
   esbuildPlugins: [],
   // inject globals onto window if required
