@@ -2,10 +2,9 @@ import PassportNFT from "../../abis/Passport.json";
 import { useContractRead, useContractWrite } from "../use-wagmi";
 
 export function usePassportSigner(id: number) {
-  console.log(id);
   return useContractRead(
     {
-      addressOrName: process.env.nationPassportNFT,
+      addressOrName: process.env.NEXT_PUBLIC_PASSPORT_NFT_ADDRESS,
       contractInterface: PassportNFT.abi,
     },
     "signerOf",
@@ -20,7 +19,7 @@ export function usePassportSigner(id: number) {
 export function useSetPassportSigner(id: number, signerAddress: string) {
   return useContractWrite(
     {
-      addressOrName: process.env.nationPassportNFT,
+      addressOrName: process.env.NEXT_PUBLIC_PASSPORT_NFT_ADDRESS,
       contractInterface: PassportNFT.abi,
     },
     "setSigner",
