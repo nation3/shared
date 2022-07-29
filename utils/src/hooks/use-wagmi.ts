@@ -40,7 +40,11 @@ export function useStaticCall(params: any) {
 }
 
 export function useAccount(params?: any) {
-  return useHandleError(_useAccount(params)[0]);
+  const [obj, disconnect] = _useAccount(params);
+  return {
+    ...obj,
+    disconnect: async () => await disconnect(),
+  };
 }
 
 export function useNetwork() {
