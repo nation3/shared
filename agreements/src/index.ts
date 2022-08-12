@@ -1,2 +1,4 @@
 import Badge from "./Badge";
-export { Badge };
+import useWriteAgreement from "./use-agreement";
+
+export { Badge, useWriteAgreement };
