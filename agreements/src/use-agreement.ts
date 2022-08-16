@@ -1,8 +1,9 @@
 import abiJson from "./abi.json";
-import { Contract, providers, BigNumber, Signer, ethers } from "ethers";
+import { Buffer } from "buffer";
+import { Contract, BigNumber, Signer, ethers } from "ethers";
 import keccak256 from "keccak256";
-import MerkleTree from "merkletreejs";
-import { useMemo, useState } from "react";
+import { MerkleTree } from "merkletreejs";
+import { useMemo } from "react";
 
 export default function useWriteAgreement(
   contractAddress: string,
