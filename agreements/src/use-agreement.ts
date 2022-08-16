@@ -13,30 +13,16 @@ export default function useWriteAgreement(
     [contractAddress, signer]
   );
 
-  const createMerkleTree = (positions: [string, BigNumber][]) => {
-    const leaves = positions.map((x) =>
-      keccak256(ethers.utils.solidityPack(["address", "uint256"], [x[0], x[1]]))
-    );
-    return new MerkleTree(leaves, keccak256);
-  };
-
-  const findRoot = (positions: [string, BigNumber][]) => {
-    return createMerkleTree(positions).getHexRoot();
-  };
-
-  const findUserLeaf = async (positions: [string, BigNumber][]) => {
-    return await positions.find(
-      async (x) => x[0] == (await signer.getAddress())
-    );
-  };
-
-  const findProof = async (
-    positions: [string, BigNumber][],
-    leaf: [string, BigNumber]
-  ) => {
-    return createMerkleTree(positions).getProof(
-      keccak256(
-        ethers.utils.solidityPack(["address", "uint256"], [leaf[0], leaf[1]])
+  const initialHashListToken = (address: string, balance: string) => {
+    return ethers.utils.hexlify(
+      Buffer.from(
+        keccak256(
+          ethers.utils.defaultAbiCoder.encode(
+            ["address", "uint256"],
+            [address, balance]
+          )
+        ).toString("hex"),
+        "hex"
       )
     );
   };
@@ -44,11 +30,23 @@ export default function useWriteAgreement(
   const createAgreement = async (
     terms: string,
     metadataURI: string,
-    positions: [string, BigNumber][]
+    positions: [string, string][]
   ) => {
-    const root = findRoot(positions);
+    const Leaves = positions.map(([address, balance]) =>
+      initialHashListToken(address, balance)
+    );
+    const Tree = new MerkleTree(Leaves, keccak256, { sortPairs: true });
+    const root = Tree.getHexRoot();
+
     const txn = await contract.createAgreement({
-      termsHash: "0x" + keccak256(terms).toString("hex"),
+      termsHash: ethers.utils.hexlify(
+        Buffer.from(
+          keccak256(
+            ethers.utils.defaultAbiCoder.encode(["string"], [terms])
+          ).toString("hex"),
+          "hex"
+        )
+      ),
       criteria: root,
       metadataURI,
     });
@@ -57,22 +55,27 @@ export default function useWriteAgreement(
 
   const joinAgreement = async (
     agreementId: string,
-    positions: [string, BigNumber][]
+    positions: [string, string][],
+    balance: string
   ) => {
-    const criteria = (await contract.agreement(agreementId))[1];
+    const address = await signer.getAddress();
+    const Leaves = positions.map(([address, balance]) =>
+      initialHashListToken(address, balance)
+    );
+    const Tree = new MerkleTree(Leaves, keccak256, { sortPairs: true });
 
-    const leafPosition = await findUserLeaf(positions);
-    if (leafPosition == undefined) {
-      throw new Error("User is not a participant in the contract");
-    }
-    const proof = await findProof(positions, leafPosition);
+    const leaf = initialHashListToken(address, balance);
+
+    const proof = Tree.getProof(leaf).map((proof) =>
+      ethers.utils.hexlify(proof.data)
+    );
 
     const txn = await contract.joinAgreement(
       agreementId,
       {
-        account: await signer.getAddress(),
-        balance: leafPosition[1],
-        proof: proof.map((x) => "0x" + x.data.toString("hex")),
+        account: address,
+        balance,
+        proof,
       },
       {
         gasLimit: BigNumber.from(1000000),

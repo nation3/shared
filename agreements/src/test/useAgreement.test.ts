@@ -26,19 +26,18 @@ test("creating and joining a contract", async () => {
   await token.approve(contractAddress, BigNumber.from(1000000));
 
   const positions = [
-    [
-      "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d",
-      BigNumber.from(1),
-    ],
-    [
-      "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
-      BigNumber.from(1),
-    ],
-  ] as [string, BigNumber][];
+    ["0x70997970c51812dc3a010c7d01b50e0d17dc79c8", "1"],
+    ["0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266", "1"],
+    ["0x3c44cdddb6a900fa2b585dd299e03d12fa4293bc", "1"],
+  ] as [string, string][];
 
   const createTxn = await result.current.createAgreement("", "", positions);
   const agreementId = (await createTxn.wait()).events[0].args[0];
 
-  const joinTxn = await result.current.joinAgreement(agreementId, positions);
+  const joinTxn = await result.current.joinAgreement(
+    agreementId,
+    positions,
+    "1"
+  );
   console.log(await joinTxn.wait());
 });
