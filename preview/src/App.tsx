@@ -1,27 +1,27 @@
-import React from "react";
+import "./index.css";
+import { Nation3App, DefaultLayout, DefaultSidebar } from "@nation3/components";
+import { ViewGridIcon } from "@heroicons/react/outline";
 import logo from "./logo.svg";
-import "./App.css";
-import Runner from "./components/Runner";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Runner />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Nation3App>
+      <DefaultLayout
+        sidebar={
+          <DefaultSidebar
+            logo={<img src={logo} alt="logo" />}
+            onRoute={console.log}
+            navLinks={[
+              {
+                href: "/",
+                icon: <ViewGridIcon className="w-5 h-5" />,
+                name: "Start",
+              },
+            ]}
+          />
+        }
+      />
+    </Nation3App>
   );
 }
 
