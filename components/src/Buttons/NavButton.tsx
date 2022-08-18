@@ -13,7 +13,7 @@ export default function NavButton({
   onRoute: (href: string) => void;
 }) {
   return (
-    <li className="relative py-2">
+    <li className="relative py-2 font-display">
       <a
         onClick={() => onRoute(route)}
         className={`flex items-center p-2 py-4 text-base rounded-lg cursor-pointer ${

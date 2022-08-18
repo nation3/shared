@@ -11,7 +11,7 @@ export default function ExternalNavButton({
   name: string;
 }) {
   return (
-    <li className="relative py-2">
+    <li className="relative py-2 font-display">
       <a
         href={url}
         className="flex items-center p-2 py-4 text-base text-gray-900 rounded-lg cursor-pointer hover:bg-gray-200"
