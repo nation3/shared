@@ -1,7 +1,8 @@
 import React from "react";
 import { Button, ExternalNavButton, NavButton } from "../Buttons";
+import AccountButton from "../Buttons/AccountButton";
 import SignInButton from "../Buttons/SignInButton";
-import { Connector } from "../Types";
+import { Account, Connector } from "../Types";
 
 type LinkProps = {
   href: string;
@@ -15,12 +16,14 @@ export default function Sidebar({
   onRoute,
   onConnect,
   connectors,
+  account,
 }: {
   logo: React.ReactElement;
   navLinks: LinkProps[];
   onRoute: (href: string) => void;
   onConnect: (connector: Connector) => void;
   connectors: Connector[];
+  account?: Account;
 }) {
   return (
     <aside
@@ -55,7 +58,11 @@ export default function Sidebar({
         </ul>
       </div>
       <div className="w-full p-4">
-        <SignInButton connectors={connectors} onConnect={onConnect} />
+        {account ? (
+          <AccountButton account={account} />
+        ) : (
+          <SignInButton connectors={connectors} onConnect={onConnect} />
+        )}
       </div>
     </aside>
   );

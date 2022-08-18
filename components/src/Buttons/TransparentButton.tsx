@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 export default function Button({
   label,
@@ -13,7 +12,7 @@ export default function Button({
   onClick?: () => void;
 }) {
   return (
-    <motion.button
+    <button
       onClick={onClick}
       type="button"
       disabled={disabled}
@@ -21,6 +20,6 @@ export default function Button({
     >
       {label}
       {children}
-    </motion.button>
+    </button>
   );
 }

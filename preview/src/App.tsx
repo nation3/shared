@@ -9,6 +9,7 @@ function App() {
       <DefaultLayout
         sidebar={
           <DefaultSidebar
+            onConnect={console.log}
             logo={<img src={logo} alt="logo" />}
             onRoute={console.log}
             navLinks={[
@@ -25,6 +26,14 @@ function App() {
                 ready: true,
               },
             ]}
+            account={{
+              address: "0x540ABe72",
+              connector: {
+                name: "MetaMask",
+                id: "ADUBO",
+                ready: true,
+              },
+            }}
           />
         }
       />
