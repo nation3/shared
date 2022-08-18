@@ -13,11 +13,13 @@ export default function Sidebar({
   logo,
   navLinks,
   onRoute,
+  onConnect,
   connectors,
 }: {
   logo: React.ReactElement;
   navLinks: LinkProps[];
   onRoute: (href: string) => void;
+  onConnect: (connector: Connector) => void;
   connectors: Connector[];
 }) {
   return (
@@ -53,7 +55,7 @@ export default function Sidebar({
         </ul>
       </div>
       <div className="w-full p-4">
-        <SignInButton connectors={connectors} />
+        <SignInButton connectors={connectors} onConnect={onConnect} />
       </div>
     </aside>
   );
