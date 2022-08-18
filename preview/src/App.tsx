@@ -18,6 +18,13 @@ function App() {
                 name: "Start",
               },
             ]}
+            connectors={[
+              {
+                name: "MetaMask",
+                id: "ADUBO",
+                ready: true,
+              },
+            ]}
           />
         }
       />

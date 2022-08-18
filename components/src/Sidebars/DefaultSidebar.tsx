@@ -1,5 +1,7 @@
 import React from "react";
 import { Button, ExternalNavButton, NavButton } from "../Buttons";
+import SignInButton from "../Buttons/SignInButton";
+import { Connector } from "../Types";
 
 type LinkProps = {
   href: string;
@@ -11,10 +13,12 @@ export default function Sidebar({
   logo,
   navLinks,
   onRoute,
+  connectors,
 }: {
   logo: React.ReactElement;
   navLinks: LinkProps[];
   onRoute: (href: string) => void;
+  connectors: Connector[];
 }) {
   return (
     <aside
@@ -49,7 +53,7 @@ export default function Sidebar({
         </ul>
       </div>
       <div className="w-full p-4">
-        <Button label="Sign in" />
+        <SignInButton connectors={connectors} />
       </div>
     </aside>
   );

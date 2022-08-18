@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 
 export default function Button({
   label,
+  children,
   disabled,
   onClick,
 }: {
-  label: string;
+  label?: string;
+  children?: (string | React.ReactElement)[];
   disabled?: boolean;
   onClick?: () => void;
 }) {
@@ -14,11 +16,11 @@ export default function Button({
     <motion.button
       onClick={onClick}
       type="button"
-      whileTap={{ scale: 0.95 }}
       disabled={disabled}
-      className="flex items-center justify-center w-full p-2 py-3 text-base font-medium text-white transition rounded-lg cursor-pointer bg-n3blue hover:bg-n3blue-500"
+      className="flex items-center justify-start w-full p-2 py-3 text-base font-medium transition rounded-lg cursor-pointer hover:bg-gray-200 focus:bg-n3blue"
     >
       {label}
+      {children}
     </motion.button>
   );
 }
