@@ -6,19 +6,19 @@ export default function Modal({
   children,
   onClose,
 }: {
-  children: React.ReactElement;
+  children: React.ReactElement | React.ReactElement[];
   onClose: () => void;
 }) {
   return (
     <AnimatePresence>
       <div
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-screen h-screen overflow-x-hidden overflow-y-auto bg-gray-700 cursor-pointer bg-opacity-40"
+        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-screen h-screen p-8 overflow-x-hidden overflow-y-auto bg-gray-700 cursor-pointer bg-opacity-40"
         onClick={onClose}
       >
         <motion.div
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="relative max-w-lg p-4 py-6 m-auto text-gray-800 bg-white shadow cursor-default rounded-2xl"
+          className="relative w-full max-w-lg p-4 py-6 m-auto text-gray-800 bg-white shadow cursor-default rounded-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           <button

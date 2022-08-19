@@ -15,6 +15,7 @@ export default function Sidebar({
   navLinks,
   onRoute,
   onConnect,
+  onDisconnect,
   connectors,
   account,
 }: {
@@ -22,6 +23,7 @@ export default function Sidebar({
   navLinks: LinkProps[];
   onRoute: (href: string) => void;
   onConnect: (connector: Connector) => void;
+  onDisconnect?: () => void;
   connectors: Connector[];
   account?: Account;
 }) {
@@ -59,7 +61,7 @@ export default function Sidebar({
       </div>
       <div className="w-full p-4">
         {account ? (
-          <AccountButton account={account} />
+          <AccountButton account={account} onDisconnect={onDisconnect} />
         ) : (
           <SignInButton connectors={connectors} onConnect={onConnect} />
         )}

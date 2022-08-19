@@ -34,6 +34,7 @@ function App() {
                 ready: true,
               },
             }}
+            onDisconnect={console.log}
           />
         }
       />
