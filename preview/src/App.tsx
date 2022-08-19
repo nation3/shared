@@ -37,7 +37,9 @@ function App() {
             onDisconnect={console.log}
           />
         }
-      />
+      >
+        <div className="">THIS</div>
+      </DefaultLayout>
     </Nation3App>
   );
 }

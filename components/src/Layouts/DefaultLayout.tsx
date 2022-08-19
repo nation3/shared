@@ -4,12 +4,17 @@ import { DefaultSidebar } from "../Sidebars";
 
 export default function DefaultLayout({
   sidebar,
+  children,
 }: {
   sidebar: React.ReactElement;
+  children?: React.ReactElement | React.ReactElement[];
 }) {
   return (
-    <div className="mx-auto bg-n3bg font-display">
+    <div className="flex mx-auto bg-n3bg font-display">
       <div className="h-screen">{sidebar}</div>
+      <div className="flex flex-col w-full h-screen p-24 overflow-y-scroll">
+        {children}
+      </div>
     </div>
   );
 }
