@@ -5,9 +5,10 @@ import SignInButton from "../Buttons/SignInButton";
 import { Account, Connector } from "../Types";
 
 type LinkProps = {
-  href: string;
+  route: string;
   icon: React.ReactElement;
   name: string;
+  isActive?: boolean;
 };
 
 export default function Sidebar({
@@ -40,18 +41,19 @@ export default function Sidebar({
         </div>
         <ul className="p-4 overflow-y-auto grow">
           {navLinks.map((link, idx) =>
-            link.href.charAt(0) === "/" ? (
+            link.route.charAt(0) === "/" ? (
               <NavButton
                 key={idx}
-                route={link.href}
+                route={link.route}
                 name={link.name}
                 icon={link.icon}
+                isActive={link.isActive}
                 onRoute={onRoute}
               />
             ) : (
               <ExternalNavButton
                 key={idx}
-                url={link.href}
+                url={link.route}
                 name={link.name}
                 icon={link.icon}
               />

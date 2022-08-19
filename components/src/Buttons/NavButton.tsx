@@ -6,20 +6,20 @@ export default function NavButton({
   icon,
   name,
   onRoute,
+  isActive,
 }: {
   route: string;
   icon: React.ReactElement;
   name: string;
   onRoute: (href: string) => void;
+  isActive?: boolean;
 }) {
   return (
     <li className="relative py-2 font-display">
       <a
         onClick={() => onRoute(route)}
         className={`flex items-center p-2 py-4 text-base rounded-lg cursor-pointer ${
-          window.location.pathname.includes(route)
-            ? "bg-n3blue text-white"
-            : "hover:bg-gray-200 text-gray-800"
+          isActive ? "bg-n3blue text-white" : "hover:bg-gray-200 text-gray-800"
         }`}
       >
         <div className="px-3">{icon}</div>

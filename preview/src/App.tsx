@@ -14,7 +14,7 @@ function App() {
             onRoute={console.log}
             navLinks={[
               {
-                href: "/",
+                route: "/",
                 icon: <ViewGridIcon className="w-5 h-5" />,
                 name: "Start",
               },
