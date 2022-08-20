@@ -1,5 +1,5 @@
 import "./index.css";
-import "flowbite";
+
 export * from "./Buttons";
 export * from "./Layouts";
 export * from "./Sidebars";
