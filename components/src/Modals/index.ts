@@ -1,3 +1,3 @@
-import { default as SignInModal } from "./SignInModal";
+import { default as SignInModal } from './SignInModal'
 
-export { SignInModal };
+export { SignInModal }

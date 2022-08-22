@@ -1,14 +1,14 @@
-import React from "react";
-import { ExternalLinkIcon } from "@heroicons/react/outline";
+import React from 'react'
+import { ExternalLinkIcon } from '@heroicons/react/outline'
 
 export default function ExternalNavButton({
   url,
   icon,
   name,
 }: {
-  url: string;
-  icon: React.ReactElement;
-  name: string;
+  url: string
+  icon: React.ReactElement
+  name: string
 }) {
   return (
     <li className="relative py-2 font-display">
@@ -21,5 +21,5 @@ export default function ExternalNavButton({
         <ExternalLinkIcon className="absolute w-5 h-5 opacity-50 right-4" />
       </a>
     </li>
-  );
+  )
 }

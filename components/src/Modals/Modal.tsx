@@ -1,13 +1,13 @@
-import React from "react";
-import { XIcon } from "@heroicons/react/outline";
-import { AnimatePresence, motion } from "framer-motion";
+import React from 'react'
+import { XIcon } from '@heroicons/react/outline'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Modal({
   children,
   onClose,
 }: {
-  children: React.ReactElement | React.ReactElement[];
-  onClose: () => void;
+  children: React.ReactElement | React.ReactElement[]
+  onClose: () => void
 }) {
   return (
     <AnimatePresence>
@@ -34,5 +34,5 @@ export default function Modal({
         </motion.div>
       </div>
     </AnimatePresence>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function Button({
   label,
@@ -6,10 +6,10 @@ export default function Button({
   disabled,
   onClick,
 }: {
-  label?: string;
-  children?: (string | React.ReactElement)[];
-  disabled?: boolean;
-  onClick?: () => void;
+  label?: string
+  children?: (string | React.ReactElement)[]
+  disabled?: boolean
+  onClick?: () => void
 }) {
   return (
     <button
@@ -21,5 +21,5 @@ export default function Button({
       {label}
       {children}
     </button>
-  );
+  )
 }

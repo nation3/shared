@@ -1,17 +1,17 @@
-import { ChevronDownIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
-import Blockies from "react-blockies";
-import AccountModal from "../Modals/AccountModal";
-import { Account } from "../Types";
+import { ChevronDownIcon } from '@heroicons/react/outline'
+import React, { useState } from 'react'
+import Blockies from 'react-blockies'
+import AccountModal from '../Modals/AccountModal'
+import { Account } from '../Types'
 
 export default function AccountButton({
   account,
   onDisconnect,
 }: {
-  account: Account;
-  onDisconnect?: () => void;
+  account: Account
+  onDisconnect?: () => void
 }) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
   return (
     <>
       <button
@@ -28,7 +28,7 @@ export default function AccountButton({
         </div>
         {account.ensName
           ? account.ensName
-          : `${((account.address as string) ?? "").substring(
+          : `${((account.address as string) ?? '').substring(
               0,
               6
             )}...${account.address.slice(-4)}`}
@@ -43,5 +43,5 @@ export default function AccountButton({
         />
       )}
     </>
-  );
+  )
 }

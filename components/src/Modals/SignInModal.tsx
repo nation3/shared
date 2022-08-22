@@ -1,28 +1,28 @@
-import { KeyIcon, XCircleIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
-import { ErrorAlert } from "../Alerts";
-import { TransparentButton } from "../Buttons";
-import { Connector } from "../Types";
-import Modal from "./Modal";
+import { KeyIcon, XCircleIcon } from '@heroicons/react/outline'
+import React, { useState } from 'react'
+import { ErrorAlert } from '../Alerts'
+import { TransparentButton } from '../Buttons'
+import { Connector } from '../Types'
+import Modal from './Modal'
 
 export default function SignInModal({
   onClose,
   onConnect,
   connectors,
 }: {
-  onClose: () => void;
-  onConnect: (connector: Connector) => void;
-  connectors: Connector[];
+  onClose: () => void
+  onConnect: (connector: Connector) => void
+  connectors: Connector[]
 }) {
-  const [connectError, setConnectError] = useState<Error | null>(null);
+  const [connectError, setConnectError] = useState<Error | null>(null)
 
   const connect = (connector: Connector) => {
     try {
-      onConnect(connector);
+      onConnect(connector)
     } catch (e) {
-      setConnectError(e as Error);
+      setConnectError(e as Error)
     }
-  };
+  }
 
   return (
     <Modal onClose={onClose}>
@@ -37,7 +37,7 @@ export default function SignInModal({
             <ErrorAlert errorMessage={connectError.message} />
           </div>
         ) : (
-          ""
+          ''
         )}
 
         <ul className="p-2 -m-2 menu bg-base-100 rounded-box">
@@ -51,14 +51,14 @@ export default function SignInModal({
                   {connector.icon || <KeyIcon className="w-5 h-5" />}
                 </div>
                 {connector.name}
-                {!connector.ready ? " (unsupported)" : ""}
+                {!connector.ready ? ' (unsupported)' : ''}
               </TransparentButton>
             </li>
           ))}
         </ul>
 
         <p className="px-4 mt-4">
-          New to Ethereum?{" "}
+          New to Ethereum?{' '}
           <a
             href="https://ethereum.org/wallets/"
             rel="noreferrer noopener"
@@ -69,7 +69,7 @@ export default function SignInModal({
           </a>
           .<br />
           <br />
-          By using this software, you agree to{" "}
+          By using this software, you agree to{' '}
           <a
             href="https://github.com/nation3/app/blob/master/LICENSE.md"
             rel="noreferrer noopener"
@@ -82,5 +82,5 @@ export default function SignInModal({
         </p>
       </>
     </Modal>
-  );
+  )
 }
