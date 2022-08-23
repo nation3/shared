@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import { SignInModal } from "../Modals";
-import { Connector } from "../Types";
-import Button from "./Button";
+import React, { useState } from 'react'
+import { SignInModal } from '../Modals'
+import { Connector } from '../Types'
+import Button from './Button'
 
 export default function SignInButton({
   connectors,
   onConnect,
 }: {
-  connectors: Connector[];
-  onConnect: (connector: Connector) => void;
+  connectors: Connector[]
+  onConnect: (connector: Connector) => void
 }) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false)
   return (
     <>
       <Button label="Sign in" onClick={() => setModalOpen(true)} />
@@ -23,5 +23,5 @@ export default function SignInButton({
         />
       )}
     </>
-  );
+  )
 }

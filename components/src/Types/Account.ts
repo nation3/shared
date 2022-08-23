@@ -1,9 +1,9 @@
-import Connector from "./Connector";
+import Connector from './Connector'
 
 type Account = {
-  ensName?: string;
-  address: string;
-  connector: Connector;
-};
+  ensName?: string
+  address: string
+  connector: Connector
+}
 
-export default Account;
+export default Account

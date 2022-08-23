@@ -1,17 +1,17 @@
-import { LogoutIcon, UserIcon } from "@heroicons/react/outline";
-import React from "react";
-import { TransparentButton } from "../Buttons";
-import { Account } from "../Types";
-import Modal from "./Modal";
+import { LogoutIcon, UserIcon } from '@heroicons/react/outline'
+import React from 'react'
+import { TransparentButton } from '../Buttons'
+import { Account } from '../Types'
+import Modal from './Modal'
 
 export default function AccountModal({
   account,
   onClose,
   onDisconnect,
 }: {
-  account: Account;
-  onClose: () => void;
-  onDisconnect?: () => void;
+  account: Account
+  onClose: () => void
+  onDisconnect?: () => void
 }) {
   return (
     <Modal onClose={onClose}>
@@ -32,8 +32,8 @@ export default function AccountModal({
               </div>
               {account.ensName
                 ? account.ensName
-                : `${((account.address as string) ?? "").substring(0, 6)}...${(
-                    (account.address as string) ?? ""
+                : `${((account.address as string) ?? '').substring(0, 6)}...${(
+                    (account.address as string) ?? ''
                   ).slice(-4)}`}
             </TransparentButton>
           </a>
@@ -51,5 +51,5 @@ export default function AccountModal({
         )}
       </ul>
     </Modal>
-  );
+  )
 }

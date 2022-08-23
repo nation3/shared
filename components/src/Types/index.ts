@@ -1,4 +1,4 @@
-import Connector from "./Connector";
-import Account from "./Account";
+import Connector from './Connector'
+import Account from './Account'
 
-export { Connector, Account };
+export { Connector, Account }

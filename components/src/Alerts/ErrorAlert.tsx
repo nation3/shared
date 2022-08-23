@@ -1,13 +1,13 @@
-import React from "react";
-import Alert from "./Alert";
-import { XCircleIcon } from "@heroicons/react/outline";
+import React from 'react'
+import Alert from './Alert'
+import { XCircleIcon } from '@heroicons/react/outline'
 
 export default function ErrorAlert({
   errorMessage,
   icon,
 }: {
-  errorMessage: string;
-  icon?: React.ReactElement;
+  errorMessage: string
+  icon?: React.ReactElement
 }) {
   return (
     <Alert
@@ -15,5 +15,5 @@ export default function ErrorAlert({
       text={errorMessage}
       icon={icon ?? <XCircleIcon className="w-5 h-5" />}
     />
-  );
+  )
 }

@@ -1,14 +1,14 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function Button({
   label,
   disabled,
   onClick,
 }: {
-  label: string;
-  disabled?: boolean;
-  onClick?: () => void;
+  label: string
+  disabled?: boolean
+  onClick?: () => void
 }) {
   return (
     <motion.button
@@ -20,5 +20,5 @@ export default function Button({
     >
       {label}
     </motion.button>
-  );
+  )
 }

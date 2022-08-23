@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 
 export default function Alert({
   text,
   icon,
   color,
 }: {
-  text: string;
-  icon?: React.ReactElement;
-  color: string;
+  text: string
+  icon?: React.ReactElement
+  color: string
 }) {
   return (
     <div
@@ -16,5 +16,5 @@ export default function Alert({
       {icon && <div className="px-3">{icon}</div>}
       {text}
     </div>
-  );
+  )
 }
