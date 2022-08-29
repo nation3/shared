@@ -11,7 +11,7 @@ export default function Badge({
 }) {
   return (
     <span
-      className={`bg-${bgColor} text-${textColor} font-extrabold mr-2 px-2.5 py-0.5 rounded`}
+      className={`bg-${bgColor} text-${textColor} font-bold mr-2 px-2.5 py-0.5 rounded`}
     >
       {text}
     </span>
