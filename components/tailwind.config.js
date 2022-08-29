@@ -11,7 +11,9 @@ module.exports = {
       normal: 300,
       medium: 400,
       semibold: 500,
-      bold: 500,
+      bold: 600,
+      extrabold: 700,
+      black: 800,
     },
     extend: {
       colors: {
