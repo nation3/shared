@@ -9,8 +9,8 @@ interface TableProps {
 export default function Table({ columns, data, className }: TableProps) {
   return (
     <div className={`relative overflow-x-auto ${className}`}>
-      <table className="w-full text-left text-gray-500">
-        <thead className="text-gray-700 uppercase bg-gray-50 ">
+      <table className="w-full text-left">
+        <thead className="text-gray-500 uppercase bg-gray-50 ">
           <tr>
             {columns.map((column) => (
               <th scope="col" className="px-6 py-3">
