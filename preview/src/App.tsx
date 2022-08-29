@@ -49,18 +49,20 @@ function App() {
         <div className="max-w-2xl">
           <Card>
             <Table
-              columns={["A"]}
+              columns={["participant", "STAKE", "STATUS"]}
               data={[
                 [
+                  "test.eth",
+                  <b>10 $NATION</b>,
                   <Badge
-                    text="Hello Hello Hello Hello"
+                    text="Hasn't joined"
                     bgColor="yellow-100"
                     textColor="yellow-800"
                   />,
                 ],
               ]}
             />
-            <InfoAlert message="Error Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello" />
+            <InfoAlert message="If you are one of the parties involved in this agreement, please keep the terms file safe. You will need it to interact with this app." />
           </Card>
         </div>
       </DefaultLayout>
