@@ -16,7 +16,7 @@ export default function Button({
       type="button"
       whileTap={{ scale: 0.95 }}
       disabled={disabled}
-      className="flex items-center justify-center w-full p-2 py-3 text-base font-medium text-white transition rounded-lg cursor-pointer font-primary bg-n3blue hover:bg-n3blue-500"
+      className="flex items-center justify-center w-full p-2 py-3 text-base font-medium text-white transition rounded-lg cursor-pointer font-display bg-n3blue hover:bg-n3blue-500"
     >
       {label}
     </motion.button>

@@ -1,5 +1,11 @@
 import "./index.css";
-import { Nation3App, DefaultLayout, DefaultSidebar } from "@nation3/components";
+import {
+  Nation3App,
+  DefaultLayout,
+  DefaultSidebar,
+  Table,
+  InfoAlert,
+} from "@nation3/components";
 import { ViewGridIcon } from "@heroicons/react/outline";
 import logo from "./logo.svg";
 
@@ -38,7 +44,10 @@ function App() {
           />
         }
       >
-        <div className="">THIS</div>
+        <div className="">
+          <Table columns={["A"]} data={[[<b className="">B</b>]]} />
+          <InfoAlert message="Error" />
+        </div>
       </DefaultLayout>
     </Nation3App>
   );

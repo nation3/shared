@@ -12,7 +12,7 @@ export default function DefaultLayout({
   return (
     <div className="flex mx-auto bg-n3bg font-display">
       <div className="h-screen">{sidebar}</div>
-      <div className="flex flex-col w-full h-screen p-24 overflow-y-scroll items-center">
+      <div className="flex flex-col items-center w-full h-screen p-24 overflow-y-scroll font-body">
         {children}
       </div>
     </div>
