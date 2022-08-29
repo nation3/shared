@@ -6,6 +6,7 @@ import {
   Table,
   InfoAlert,
   Badge,
+  Card,
 } from "@nation3/components";
 import { ViewGridIcon } from "@heroicons/react/outline";
 import logo from "./logo.svg";
@@ -45,20 +46,22 @@ function App() {
           />
         }
       >
-        <div className="">
-          <Table
-            columns={["A"]}
-            data={[
-              [
-                <Badge
-                  text="Hello"
-                  bgColor="yellow-100"
-                  textColor="yellow-800"
-                />,
-              ],
-            ]}
-          />
-          <InfoAlert message="Error" />
+        <div className="max-w-2xl">
+          <Card>
+            <Table
+              columns={["A"]}
+              data={[
+                [
+                  <Badge
+                    text="Hello Hello Hello Hello"
+                    bgColor="yellow-100"
+                    textColor="yellow-800"
+                  />,
+                ],
+              ]}
+            />
+            <InfoAlert message="Error Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello" />
+          </Card>
         </div>
       </DefaultLayout>
     </Nation3App>

@@ -13,7 +13,7 @@ export default function Alert({
 }) {
   return (
     <div
-      className={`flex items-center justify-start w-full p-5 py-4 text-base font-medium rounded-2xl bg-${color} ${className}`}
+      className={`flex items-center justify-start max-w-full p-5 py-4 text-base font-medium rounded-2xl bg-${color} ${className}`}
     >
       {icon && <div className="pr-3">{icon}</div>}
       {text}
