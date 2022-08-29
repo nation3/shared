@@ -47,13 +47,31 @@ function App() {
         }
       >
         <div className="max-w-2xl">
-          <Card>
+          <Card className="flex flex-col gap-8">
             <Table
               columns={["participant", "STAKE", "STATUS"]}
               data={[
                 [
                   "test.eth",
                   <b>10 $NATION</b>,
+                  <Badge
+                    text="Signed finalization"
+                    bgColor="green-100"
+                    textColor="green-800"
+                  />,
+                ],
+                [
+                  "greg.eth",
+                  <b>4 $NATION</b>,
+                  <Badge
+                    text="Hasn't joined"
+                    bgColor="yellow-100"
+                    textColor="yellow-800"
+                  />,
+                ],
+                [
+                  "0xgallego.eth",
+                  <b>4 $NATION</b>,
                   <Badge
                     text="Hasn't joined"
                     bgColor="yellow-100"
