@@ -14,7 +14,7 @@ export default function Table({ columns, data, className }: TableProps) {
           <tr>
             {columns.map((column) => (
               <th scope="col" className="px-6 py-3">
-                {column}
+                {column.toUpperCase()}
               </th>
             ))}
           </tr>
