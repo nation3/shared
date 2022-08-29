@@ -5,6 +5,7 @@ import {
   DefaultSidebar,
   Table,
   InfoAlert,
+  Badge,
 } from "@nation3/components";
 import { ViewGridIcon } from "@heroicons/react/outline";
 import logo from "./logo.svg";
@@ -45,7 +46,18 @@ function App() {
         }
       >
         <div className="">
-          <Table columns={["A"]} data={[[<b className="">B</b>]]} />
+          <Table
+            columns={["A"]}
+            data={[
+              [
+                <Badge
+                  text="Hello"
+                  bgColor="yellow-100"
+                  textColor="yellow-800"
+                />,
+              ],
+            ]}
+          />
           <InfoAlert message="Error" />
         </div>
       </DefaultLayout>
